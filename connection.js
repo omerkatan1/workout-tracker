@@ -13,6 +13,8 @@ app.use(express.static("public"));
 
 // connecting to mongodb
 mongoose.connect("mongodb://localhost/fitnessDB", { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
+
 
 // once open start server
 mongoose.connection.once('open', function(){
@@ -25,12 +27,15 @@ mongoose.connection.once('open', function(){
 
 
 app.post("/submit", ({ body }, res) => {
+    res.json(body);
+
+
     const workout = new Schema(body);
-  
     Schema.create(workout)
       .then(dbWorkout => {
         res.json(dbWorkout);
-    }).catch(err => {
+    })
+    .catch(err => {
         res.json(err);
     });
 });

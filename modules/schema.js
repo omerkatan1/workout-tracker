@@ -5,7 +5,7 @@ const newWorkoutSchema = new Schema({
     name: {
         type: String,
         trim: true,
-        required: "enter workout"
+        required: [true, 'cannot be blank']
     },
 
     sets: {
@@ -19,7 +19,7 @@ const newWorkoutSchema = new Schema({
         unique: true,
         required: true    
     }
-}, { _id : false } );
+});
 
 const newWorkout = mongoose.model('newWorkout', newWorkoutSchema);
 module.exports = newWorkout;

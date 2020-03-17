@@ -12,13 +12,11 @@
 
     <div>
         <form action="/submit" method="post">
-            <input type="text" id="workoutName" placeholder="Enter The Workout Name">
-            <input type="text" id="workoutReps" placeholder="Enter the amount of sets">
-            <input type="text" id="workoutSets" placeholder="Enter the amount of reps">
+            <input type="text" name="workoutName" placeholder="Enter The Workout Name" autofocus>
+            <input type="text" name="workoutSets" placeholder="Enter the amount of sets" autofocus>
+            <input type="text" name="workoutReps" placeholder="Enter the amount of reps" autofocus>
             <button type="submit" id="saveWorkout">Save</button>
         </form>
     </div>
 
 </body>
-
-<script src="../../connection.js"></script>
