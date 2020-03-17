@@ -1,10 +1,15 @@
-// const mongoose = require('mongoose');
-// const Schema = require('./modules/schema');
+const express = require("express");
+const mongoose = require('mongoose');
+const Schema = require('./modules/schema');
 
-var workoutName = document.querySelector("#workoutName").value;
-var workoutSets = document.querySelector("#workoutSets").value;
-var workoutReps = document.querySelector("#workoutReps").value;
+const PORT = process.env.PORT || 3000;
 
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+app.use(express.static("public"));
 
 // connecting to mongodb
 mongoose.connect("mongodb://localhost/fitnessDB", { useNewUrlParser: true });
@@ -16,31 +21,21 @@ mongoose.connection.once('open', function(){
     console.log('Connection Error: ', error);
 })
 
-function save(workoutName, workoutReps, workoutSets) {
-    console.log(workoutName.value);
-    console.log(workoutReps.value);
-    console.log(workoutSets.value);
 
 
-    // const workout = {
-    //     name: workoutName,
-    //     sets: workoutSets,
-    //     reps: workoutReps
-    // }
 
-    // Schema.create(workout)
-    // .then(fitnessDB => {
-    //     console.log(fitnessDB);
-    // }).catch(({ error }) => {
-    //     console.log(error);
-    // })
-}
-
-
-// var test = new schema({
-//     name: 'testWorkout',
-//     sets: 32,
-//     reps: 40
-// })
-
-// test.save();
+app.post("/submit", ({ body }, res) => {
+    const workout = new Schema(body);
+  
+    Schema.create(workout)
+      .then(dbWorkout => {
+        res.json(dbWorkout);
+    }).catch(err => {
+        res.json(err);
+    });
+});
+  
+app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}!`);
+});
+  
