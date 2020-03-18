@@ -11,10 +11,10 @@
     </header>
 
     <div>
-        <form action="/submit" method="post">
-            <input type="text" name="workoutName" placeholder="Enter The Workout Name" autofocus>
-            <input type="text" name="workoutSets" placeholder="Enter the amount of sets" autofocus>
-            <input type="text" name="workoutReps" placeholder="Enter the amount of reps" autofocus>
+        <form id="newWorkoutBox" action="/submit" method="post">
+            <input class="newWorkoutInput" id="inputName" type="text" name="workoutName" placeholder="Enter The Workout Name" autofocus>
+            <input class="newWorkoutInput" id="inputSets" type="text" name="workoutSets" placeholder="Enter the amount of sets" autofocus>
+            <input class="newWorkoutInput" id="inputReps" type="text" name="workoutReps" placeholder="Enter the amount of reps" autofocus>
             <button type="submit" id="saveWorkout">Save</button>
         </form>
     </div>

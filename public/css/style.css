@@ -2,6 +2,7 @@ body,
 html {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 header {
@@ -22,4 +23,27 @@ header {
     width: 100%;
     height: 50vh;
     text-align: center;
+}
+
+#newWorkoutBox {
+    margin-top: 10vh;
+    display: inline-block;
+    width: 500px;
+}
+
+.newWorkoutInput {
+    margin-top: 8vh;
+    padding: 15px;
+    width: 100%;
+    height: 40px;
+    font-size: 30px;
+}
+
+#saveWorkout {
+    margin-top: 50px;
+    color: whitesmoke;
+    background-color: rgb(74, 74, 192);
+    width: 120px;
+    height: 60px;
+    font-size: 25px;
 }

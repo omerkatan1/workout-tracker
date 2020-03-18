@@ -19,7 +19,7 @@ const newWorkoutSchema = new Schema({
         unique: true,
         required: true
     }
-}, { useUnifiedTopology: true });
+});
 
 const newWorkout = mongoose.model('newWorkout', newWorkoutSchema);
 module.exports = newWorkout;

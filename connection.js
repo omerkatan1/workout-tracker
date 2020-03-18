@@ -13,29 +13,31 @@ app.use(express.static("public"));
 
 // connecting to mongodb
 mongoose.connect("mongodb://localhost/fitnessDB", { useNewUrlParser: true });
-mongoose.set('useCreateIndex', true);
-
+// mongoose.set('useCreateIndex', true);
 
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we're connected!")
+});
 
 
 
 // new workout insert
 app.post("/submit", ({ body }, res) => {
-    res.json(body);
 
+    var Name = body.workoutName;
+    var Sets = body.workoutSets;
+    var Reps = body.workoutReps;
 
-    const workout = new Schema(body);
-    Schema.insertMany(workout).then(fitnessDB => {
+    var workout = new Schema({name: Name, sets: Sets, reps: Reps});
 
-        res.json(fitnessDB);
+    workout.save(function(err, newWorkout) {
+        if (err) throw err;
 
-    }).catch(function(err) {
-        res.json(err);
-        res.end();
-    });
+        console.log(newWorkout.name + " saved!");
+    })
 });
   
 app.listen(PORT, () => {
