@@ -16,27 +16,25 @@ mongoose.connect("mongodb://localhost/fitnessDB", { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 
 
-// once open start server
-mongoose.connection.once('open', function(){
-    console.log('Mongodb Connection Successful!');
-}).on('error', function(error){
-    console.log('Connection Error: ', error);
-})
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 
-
+// new workout insert
 app.post("/submit", ({ body }, res) => {
     res.json(body);
 
 
     const workout = new Schema(body);
-    Schema.create(workout)
-      .then(dbWorkout => {
-        res.json(dbWorkout);
-    })
-    .catch(err => {
+    Schema.insertMany(workout).then(fitnessDB => {
+
+        res.json(fitnessDB);
+
+    }).catch(function(err) {
         res.json(err);
+        res.end();
     });
 });
   

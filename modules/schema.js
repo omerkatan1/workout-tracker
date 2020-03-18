@@ -11,15 +11,15 @@ const newWorkoutSchema = new Schema({
     sets: {
         type: Number,
         unique: true,
-        required: true    
+        required: true
     },
 
     reps: {
         type: Number,
         unique: true,
-        required: true    
+        required: true
     }
-});
+}, { useUnifiedTopology: true });
 
 const newWorkout = mongoose.model('newWorkout', newWorkoutSchema);
 module.exports = newWorkout;
