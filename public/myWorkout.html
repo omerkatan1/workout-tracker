@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
 
-    $.ajax({ url: "/api/myworkout", method: "GET" })
+    $.ajax({ url: "https://workout-tracker-nosql.herokuapp.com/api/myworkout", method: "GET" })
         .then(function (res) {
 
             for( var i = 0; i < res.length; i++ ) {

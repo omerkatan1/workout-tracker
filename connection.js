@@ -44,7 +44,7 @@ app.get("/newWorkout", function (req, res) {
 
 
 // new workout insert
-app.post("/submit", function ({ body }, res) {
+app.post("https://workout-tracker-nosql.herokuapp.com/submit", function ({ body }, res) {
 
     var Name = body.workoutName;
     var Sets = body.workoutSets;
@@ -64,12 +64,12 @@ app.post("/submit", function ({ body }, res) {
 
 var test = require('./data/getData');
 
-app.get("/api/myworkout", function(req, res) {
+app.get("https://workout-tracker-nosql.herokuapp.com/api/myworkout", function(req, res) {
     res.json(test);
 });
 
 
-app.post("/api/myworkout", function(req, res) {
+app.post("https://workout-tracker-nosql.herokuapp.com/api/myworkout", function(req, res) {
     test.push(req.body);
     res.json();
 });
