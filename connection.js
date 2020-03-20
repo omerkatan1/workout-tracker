@@ -35,7 +35,7 @@ Schema.find(function(err, body) {
     for(var i = 0; i < body.length; i++) {
         console.log(body[i]);
     }
-})
+});
 
 
 router.get("/", function (req, res) {
