@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node connection.js"
-  }
-  ,
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/omerkatan1/workout-tracker.git"
@@ -22,6 +21,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jquery": "^3.4.1",
-    "mongoose": "^5.9.4"
+    "mongoose": "^5.9.4",
+    "path": "^0.12.7"
   }
 }
