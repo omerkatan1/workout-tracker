@@ -42,6 +42,8 @@ app.post("/submit", ({ body }, res) => {
 
         console.log(newWorkout.name + " saved!");
     })
+
+    window.location.pathname = "/"
 });
   
 app.listen(PORT, () => {
