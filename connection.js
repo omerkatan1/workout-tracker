@@ -29,7 +29,7 @@ db.once('open', function() {
 
 
 // new workout insert
-app.post("/submit", ({ body }, res) => {
+app.post("/submit", ({ body }, req, res) => {
 
     var Name = body.workoutName;
     var Sets = body.workoutSets;
@@ -43,7 +43,7 @@ app.post("/submit", ({ body }, res) => {
         console.log(newWorkout.name + " saved!");
     })
 
-    window.location.pathname = "/"
+    res.redirect(__dirname + "/public/index.html");
 });
   
 app.listen(PORT, () => {
