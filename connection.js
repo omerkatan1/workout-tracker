@@ -30,18 +30,18 @@ db.once('open', function () {
 });
 
 
-router.get("/", function (req, res) {
+router.get("https://workout-tracker-nosql.herokuapp.com/", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-app.get("/myWorkout", function (req, res) {
+app.get("https://workout-tracker-nosql.herokuapp.com/myWorkout", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/myWorkout.html"))
 })
 
 
 
 // new workout insert
-app.post("/submit", function ({ body }, res) {
+app.post("https://workout-tracker-nosql.herokuapp.com/submit", function ({ body }, res) {
 
     var Name = body.workoutName;
     var Sets = body.workoutSets;
@@ -61,12 +61,12 @@ app.post("/submit", function ({ body }, res) {
 
 var test = require('./data/getData');
 
-app.get("/api/myworkout", function(req, res) {
+app.get("https://workout-tracker-nosql.herokuapp.com/api/myworkout", function(req, res) {
     res.json(test);
 });
 
 
-app.post("/api/myworkout", function(req, res) {
+app.post("https://workout-tracker-nosql.herokuapp.com/api/myworkout", function(req, res) {
     test.push(req.body);
     res.json();
 });
