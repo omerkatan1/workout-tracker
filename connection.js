@@ -27,6 +27,17 @@ db.once('open', function () {
 });
 
 
+
+Schema.find(function(err, body) {
+    if (err) throw err;
+    console.log(body.length);
+
+    for(var i = 0; i < body.length; i++) {
+        console.log(body[i]);
+    }
+})
+
+
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
@@ -48,7 +59,7 @@ app.post("/submit", function ({ body }, res) {
         console.log(newWorkout.name + " saved!");
     })
 
-    res.redirect("/")
+    res.redirect("/");
 });
 
 app.listen(PORT, () => {
