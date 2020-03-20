@@ -62,39 +62,21 @@ app.post("/submit", function ({ body }, res) {
 
 
 
-// posts workout data to html page
-
-var workoutObj = [];
-
-Schema.find(function (err, body) {
-    if (err) throw err;
-
-    // var workoutObj = [];
-    for (var i = 0; i < body.length; i++) {
-        // console.log(body[i]);
-
-        var placeObj = {
-            workoutName: body[i].name,
-            workoutSets: body[i].sets,
-            workoutReps: body[i].reps
-        }
-        workoutObj.push(placeObj);
-    }
-
-    console.log(workoutObj);
+// console.log(workoutObj);
 
 
-    app.post("/api/myworkout", function (req, res) {
-        var test = JSON.stringify(workoutData);
-        res.json(test);
-    })
+var test = require('./data/getData');
+
+app.get("/api/myworkout", function(req, res) {
+    res.json(test);
 });
 
 
-app.get("/api/myworkout", function(req, res) {
-    console.log(res);
-    res.status(404).end()
-})
+app.post("/api/myworkout", function(req, res) {
+    test.push(req.body);
+    res.json();
+});
+
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

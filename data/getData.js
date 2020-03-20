@@ -1,4 +1,4 @@
-// const Schema = require('../modules/schema');
+const Schema = require('../modules/schema');
 
 
 // var workoutObj = [];
@@ -34,3 +34,27 @@
 // module.exports = {
 
 // }
+
+var test = [];
+Schema.find(function (err, data) {
+    if (err) throw err;
+
+    // console.log(data);
+
+    // var test = [];
+
+    for (var i = 0; i < data.length; i++) {
+
+        var obj = {
+            workoutName: data[i].name,
+            workoutSets: data[i].sets,
+            workoutReps: data[i].reps
+        }
+
+        test.push(obj)
+
+    }
+});
+
+
+module.exports = test;
