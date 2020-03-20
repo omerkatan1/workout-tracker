@@ -15,7 +15,7 @@ app.use(express.static("public"));
 // mongoose.connect("mongodb://localhost/fitnessDB", { useNewUrlParser: true });
 // mongoose.set('useCreateIndex', true);
 
-var MONGODB_URL = process.env.MONGODB_URL || "mongodb://fitnessDb:password1@ds137720.mlab.com:37720/heroku_4m6fbx56";
+var MONGODB_URL = process.env.MONGODB_URL || "mongodb://<fitnessDB>:<password1>@ds137720.mlab.com:37720/heroku_4m6fbx56";
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true })
 
 
