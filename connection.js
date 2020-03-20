@@ -1,15 +1,21 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const Schema = require('./modules/schema');
+var bodyparser = require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 
-app.use(express.static("public"));
+
+app.use(express.static(__dirname + "/public"));
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html')
+})
 
 // connecting to mongodb
 // mongoose.connect("mongodb://localhost/fitnessDB", { useNewUrlParser: true });
@@ -27,9 +33,8 @@ db.once('open', function() {
 });
 
 
-
 // new workout insert
-app.post("/submit", ({ body }, req, res) => {
+app.post("/submit", function ({ body }, req, res) {
 
     var Name = body.workoutName;
     var Sets = body.workoutSets;
@@ -43,7 +48,7 @@ app.post("/submit", ({ body }, req, res) => {
         console.log(newWorkout.name + " saved!");
     })
 
-    res.redirect(__dirname + "/public/index.html");
+    return res.redirect("/");
 });
   
 app.listen(PORT, () => {
