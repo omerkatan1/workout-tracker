@@ -34,11 +34,11 @@ router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-router.get("/myWorkout", function (req, res) {
+app.get("/myWorkout", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/myWorkout.html"));
 })
 
-router.get("/newWorkout", function (req, res) {
+app.get("/newWorkout", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/newWorkout.html"));
 })
 
