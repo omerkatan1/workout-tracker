@@ -59,20 +59,14 @@ app.post("/submit", function ({ body }, res) {
 });
 
 
-
-
-
-// console.log(workoutObj);
-
-
 var test = require('./data/getData');
 
-app.get("/api/myworkout", function(req, res) {
+router.get("/api/myworkout", function(req, res) {
     res.json(test);
 });
 
 
-app.post("/api/myworkout", function(req, res) {
+router.post("/api/myworkout", function(req, res) {
     test.push(req.body);
     res.json();
 });
