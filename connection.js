@@ -16,7 +16,7 @@ app.use(express.static("public"));
 // mongoose.set('useCreateIndex', true);
 
 var MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost/fitnessDB";
-mongoose.connect(MONGODB_URL)
+mongoose.connect(MONGODB_URL, , { useNewUrlParser: true })
 
 
 var db = mongoose.connection;
