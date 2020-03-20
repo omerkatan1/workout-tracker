@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+
 <head>
     <title>Fitness Tracker</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -9,10 +11,38 @@
         <h1 id="headerTitle">Fitness Tracker</h1>
     </header>
 
-    <div id="workoutHolder">
-        <h1 id="test">test</h1>
-    </div>
+    <div id="workoutHolder"></div>
 
 </body>
 
-<script src="./js/workout.js"></script>
+<script type="text/javascript">
+
+    $.ajax({ url: "/api/myworkout", method: "GET" })
+        .then(function (res) {
+
+            for( var i = 0; i < res.length; i++ ) {
+                var name = res[i].workoutName;
+                var sets = res[i].workoutSets;
+                var reps = res[i].workoutReps;
+
+                var workoutholder = $("#workoutHolder");
+                var div = $("<div>");
+                var h1 = $("<h1>");
+                var h2Sets = $("<h2>");
+                var h2Reps = $("<h2>");
+
+                h1.append("Workout Name:" + name);
+                h2Sets.append("Sets:" + sets);
+                h2Reps.append("Reps:" + reps);
+                div.append(h1);
+                div.append(h2Sets);
+                div.append(h2Reps);
+
+                workoutholder.append(div);
+
+            }
+
+        });
+
+
+</script>
