@@ -64,12 +64,12 @@ app.post("/submit", function ({ body }, res) {
 
 var test = require('./data/getData');
 
-app.get("https://workout-tracker-nosql.herokuapp.com/api/myworkout", function(req, res) {
+app.get("/api/myworkout", function(req, res) {
     res.json(test);
 });
 
 
-app.post("https://workout-tracker-nosql.herokuapp.com/api/myworkout", function(req, res) {
+app.post("/api/myworkout", function(req, res) {
     test.push(req.body);
     res.json();
 });
