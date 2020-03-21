@@ -18,9 +18,10 @@ app.use(express.static(__dirname + "/public"));
 
 
 
+
 // establishes mongodb connection with heroku
 var MONGODB_URL = process.env.MONGODB_URL || "mongodb://admin:password1@ds137720.mlab.com:37720/heroku_4m6fbx56";
-mongoose.connect(MONGODB_URL, { useNewUrlParser: true })
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true }, { useUnifiedTopology: true })
 
 
 var db = mongoose.connection;
@@ -57,6 +58,7 @@ app.post("/submit", function ({ body }, res) {
 
         console.log(newWorkout.name + " saved!");
     })
+    db.Schema.reIndex();
 
     res.redirect("/");
 });
