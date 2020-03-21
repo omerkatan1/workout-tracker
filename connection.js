@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/public"));
 
 // establishes mongodb connection with heroku
 var MONGODB_URL = process.env.MONGODB_URL || "mongodb://admin:password1@ds137720.mlab.com:37720/heroku_4m6fbx56";
-mongoose.connect(MONGODB_URL, { useNewUrlParser: true }, { useUnifiedTopology: true })
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true })
 
 
 var db = mongoose.connection;
