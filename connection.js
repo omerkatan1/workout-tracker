@@ -58,7 +58,7 @@ app.post("/submit", function ({ body }, res) {
 
         console.log(newWorkout.name + " saved!");
     })
-    db.Schema.reIndex();
+    // db.Schema.reIndex();
 
     res.redirect("/");
 });
