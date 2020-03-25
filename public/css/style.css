@@ -47,3 +47,12 @@ header {
     height: 60px;
     font-size: 25px;
 }
+
+#newWorkout,
+#myWorkouts,
+#editWorkouts {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(78, 78, 209);
+    
+}
